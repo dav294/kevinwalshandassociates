@@ -509,6 +509,13 @@ ul { list-style: none; }
   color: var(--muted);
 }
 
+.services-intro {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 24px;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
