@@ -240,14 +240,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', openPopup);
   });
 
-  // nav-cta — popup on mobile only; mailto on desktop
+  // nav-cta — popup on all devices
   const navCta = document.querySelector('.nav-cta');
   navCta.addEventListener('click', e => {
-    if (window.innerWidth < 900) {
-      e.preventDefault();
-      openPopup();
-    }
-    // desktop: let the mailto href run
+    e.preventDefault();
+    openPopup();
   });
 
   backdrop.addEventListener('click', closePopup);
