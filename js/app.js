@@ -220,4 +220,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   gsap.set(['.contact-heading', '.contact-sub', '.contact-actions'], { opacity: 0, y: 32 });
 
+  // ─── Contact Popup ───────────────────────────────────────
+  const popup   = document.getElementById('contact-popup');
+  const backdrop = popup.querySelector('.contact-popup-backdrop');
+  const closeBtn = popup.querySelector('.contact-popup-close');
+
+  function openPopup() {
+    popup.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    popup.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  // project-link buttons — popup on all devices
+  document.querySelectorAll('.project-link').forEach(btn => {
+    btn.addEventListener('click', openPopup);
+  });
+
+  // nav-cta — popup on mobile only; mailto on desktop
+  const navCta = document.querySelector('.nav-cta');
+  navCta.addEventListener('click', e => {
+    if (window.innerWidth < 900) {
+      e.preventDefault();
+      openPopup();
+    }
+    // desktop: let the mailto href run
+  });
+
+  backdrop.addEventListener('click', closePopup);
+  closeBtn.addEventListener('click', closePopup);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
 });
