@@ -240,11 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', openPopup);
   });
 
-  // nav-cta — popup on all devices
+  // nav-cta — popup on mobile only; direct link on desktop
   const navCta = document.querySelector('.nav-cta');
   navCta.addEventListener('click', e => {
-    e.preventDefault();
-    openPopup();
+    if (window.innerWidth < 900) {
+      e.preventDefault();
+      openPopup();
+    }
   });
 
   backdrop.addEventListener('click', closePopup);
